@@ -22,5 +22,5 @@ def appointment_create(request):
             return redirect('veterinary:list')
     else:
         form = AppointmentForm()
-
+        
     return render(request, 'veterinary/create.html', {'form': form})
