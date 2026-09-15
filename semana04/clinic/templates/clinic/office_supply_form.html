@@ -1,0 +1,8 @@
+<h2>{{ title }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+    <a href="{% url 'office_supply_list' %}">Cancelar</a>
+</form>

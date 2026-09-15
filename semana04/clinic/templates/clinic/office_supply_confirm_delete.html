@@ -1,0 +1,9 @@
+<h2>Confirmar Eliminación</h2>
+
+<p>¿Estás seguro de que deseas eliminar la asignación de <strong>{{ item.supply }}</strong> en el <strong>{{ item.office }}</strong>?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar Eliminación</button>
+    <a href="{% url 'office_supply_list' %}">Cancelar</a>
+</form>

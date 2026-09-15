@@ -1,0 +1,23 @@
+<h2>Relación 1:1 (Acceso directo e inverso)</h2>
+{% for c in consultations %}
+  <p>Consulta #{{ c.id }} - Paciente: {{ c.patient }}</p>
+  {% if c.prescription %}
+    <p>Indicaciones Receta: {{ c.prescription.indications }}</p>
+  {% else %}
+    <p>Sin receta asignada.</p>
+  {% endif %}
+{% endfor %}
+
+<hr>
+
+<h2>Relación N:M (Recorrido del Modelo Intermedio)</h2>
+{% for o in offices %}
+  <h3>{{ o }} (Piso {{ o.floor }})</h3>
+  <ul>
+    {% for os in o.officesupply_set.all %}
+      <li>Insumo: {{ os.supply.name }} | Cantidad: {{ os.quantity }} | Fecha: {{ os.last_restock }}</li>
+    {% empty %}
+      <li>Sin insumos asignados.</li>
+    {% endfor %}
+  </ul>
+{% endfor %}
