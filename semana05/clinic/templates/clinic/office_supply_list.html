@@ -1,0 +1,32 @@
+<h2>Insumos Asignados a Consultorios (Modelo Intermedio)</h2>
+
+<a href="{% url 'office_supply_create' %}">Asignar Nuevo Insumo</a>
+<br><br>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Consultorio</th>
+            <th>Insumo Médico</th>
+            <th>Cantidad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.office }}</td>
+            <td>{{ item.supply }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>
+                <a href="{% url 'office_supply_update' item.id %}">Editar</a> | 
+                <a href="{% url 'office_supply_delete' item.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No hay insumos asignados a ningún consultorio.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
